@@ -199,7 +199,7 @@ public final class GraphQLExecutor {
     info.responsePath.append(responseKey)
     
     if shouldComputeCachePath {
-      let cacheKey = try firstField.cacheKey(with: info.variables)
+      let cacheKey = try firstField.cacheKey(with: info.variables).replacingOccurrences(of: ".", with: "-")
       info.cacheKeyForField = cacheKey
       info.cachePath.append(cacheKey)
     }
